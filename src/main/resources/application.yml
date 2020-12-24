@@ -2,6 +2,8 @@ server:
   port: 9000
 spring:
   kafka:
+    bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
+    #set access basic security (user,password) here
     properties:
       sasl:
         jaas:
@@ -10,14 +12,10 @@ spring:
       security:
         protocol: SASL_PLAINTEXT
     consumer:
-      bootstrap-servers: localhost:9092
+      #must set group-id when group managed listener is used!
       group-id: group-id
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-    producer:
-      bootstrap-servers: localhost:9092
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     jaas:
       enabled: true
+    listener:
+      #When set manual acknowledgment, client must call acknowledgment.acknowledge(); to commit. Default is BATCH.
+      ack-mode: manual_immediate

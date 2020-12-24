@@ -1,7 +1,6 @@
 package com.layo.kafkaexample.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -11,9 +10,8 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@ConditionalOnProperty(value = "example.kafka.consumer-enabled", havingValue = "true")
+//@ConditionalOnProperty(value = "example.kafka.consumer-enabled", havingValue = "true") --> will disable this class when the property is false!
 public class AcknowledgeConsumerService {
-
 
     /**
      *  This topic need acknowledgment (the producer waits for an acknowledgment from kafka once the leader receives the message.)

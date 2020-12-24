@@ -17,9 +17,9 @@ public class KafkaProducerController {
 
     @PostMapping("publish")
     public void sendMessageToKafkaTopic(@RequestParam String message){
-        kafKaProducerService.sendMessage(message);
+        kafKaProducerService.sendMessage(message); //sent msg to topic "test"
         try{
-            kafKaProducerService.sendAndGet(); //set a time stamp with acknowledge
+            kafKaProducerService.sendAndGet(); //set a time stamp to topic "INPUT_DATA"
         }catch (Exception e){
             e.printStackTrace();
         }

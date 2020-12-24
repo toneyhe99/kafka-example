@@ -2,7 +2,6 @@ package com.layo.kafkaexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * Spring Boot app with Apache Kafka in Docker container: https://howtodoinjava.com/kafka/spring-boot-with-kafka/
